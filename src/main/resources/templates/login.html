@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .carousel-item {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+
+<body>
+<!-- Include the navigation bar -->
+<div th:include="navigation.html"></div>
+
+<!-- Login Section -->
+<section id="loginSection" class="py-5 bg-light content">
+    <div class="container">
+        <h2 class="text-center mb-4">Login</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="loginForm" th:action="@{/login}" method="post" onsubmit="authenticateUser(event)">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Username" id="username" name="username"
+                               value="">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <p class="text-danger" id="errorMessage" th:text="${errorMessage}"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+                function saveUsername(username) {
+                    // Save username value to local storage
+                    localStorage.setItem('username', username);
+                    // Submit the form
+                    document.getElementById('loginForm').submit();
+                }
+
+                function authenticateUser(event) {
+                    event.preventDefault(); // Prevent the form from submitting
+
+                    var usernameInput = document.getElementById('username');
+                    var username = usernameInput.value;
+                    var passwordInput = document.getElementsByName('password')[0];
+                    var password = passwordInput.value;
+
+                    // Send an AJAX request to authenticate the user
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/login', true);
+                    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4) {
+                            if (xhr.status === 200) {
+                                var redirectUrl = xhr.responseURL; // Get the response URL
+                                if (redirectUrl.includes('/laptop')) {
+                                    // User is authenticated, invoke saveUsername function
+                                    saveUsername(username);
+                                } else {
+                                    // Handle authentication failure
+                                    alert('Authentication failed. Please try again.');
+                                }
+                            } else {
+                                // Handle request error
+                                alert('Error: ' + xhr.status);
+                            }
+                        }
+                    };
+                    xhr.send('username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password));
+                }
+
+                // Set the value of the username input from local storage
+                window.onload = function() {
+                    var usernameInput = document.getElementById('username');
+                    var username = localStorage.getItem('username');
+
+                    if (username) {
+                        usernameInput.value = username;
+                    }
+                };
+
+
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

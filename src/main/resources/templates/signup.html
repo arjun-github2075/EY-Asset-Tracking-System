@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Set the body height to 100% */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Push the footer to the bottom */
+        .content {
+            flex: 1;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Include the navigation bar -->
+<div th:include="navigation.html"></div>
+
+<!-- Sign Up Form Section -->
+<section id="signupFormSection" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Sign Up</h2>
+        <form th:action="@{/users}" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mobileNumber">Mobile Number</label>
+                <input type="text" class="form-control" id="mobileNumber" name="mobile" placeholder="Enter your mobile number"
+                       required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password"
+                           required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password"
+                           required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</section>
+<br><br><br><br>
+
+<!-- Include the footer -->
+<div th:include="footer.html"></div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

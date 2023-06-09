@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Product Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    .card {
+      margin-bottom: 20px;
+    }
+
+    .section {
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .section-heading {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .section-description {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+<!-- Include the navigation bar -->
+<div th:include="navigation.html"></div>
+
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <img src="https://logo-marque.com/wp-content/uploads/2021/03/Google-Cloud-Symbole.jpg" class="img-fluid rounded-circle" alt="Google Cloud">
+      </div>
+      <div class="col">
+        <h2 class="section-heading">Google Cloud</h2>
+        <p class="section-description">Google Cloud is a suite of cloud computing services offered by Google. It provides a wide range of infrastructure and platform services to help organizations build, deploy, and scale applications and services on the same infrastructure that Google uses internally.</p>
+        <a href="google_cloud_details.html">Show More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <img src="https://logos-world.net/wp-content/uploads/2021/02/Microsoft-Azure-Symbol.png" class="img-fluid rounded-circle" alt="Azure">
+      </div>
+      <div class="col">
+        <h2 class="section-heading">Azure</h2>
+        <p class="section-description">Azure is a cloud computing service provided by Microsoft. It offers a wide range of cloud services, including virtual machines, storage, databases, and AI capabilities. Azure allows businesses to build, deploy, and manage applications and services through Microsoft-managed data centers.</p>
+        <a href="azure_details.html">Show More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <img src="https://th.bing.com/th/id/OIP.TbSXn2jIKNB-Nenc3_obiwAAAA?pid=ImgDet&rs=1" class="img-fluid rounded-circle" alt="AWS">
+      </div>
+      <div class="col">
+        <h2 class="section-heading">AWS</h2>
+        <p class="section-description">AWS (Amazon Web Services) is a comprehensive cloud computing platform provided by Amazon. It offers a broad set of global cloud-based services, including computing power, storage, databases, and analytics. AWS enables businesses to scale and grow by providing flexible and cost-effective cloud solutions.</p>
+        <a href="aws_details.html">Show More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Request Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+<!-- Include the navigation bar -->
+<div th:include="navigation.html"></div>
+
+<!-- Request Form Section -->
+<section id="requestFormSection" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Request Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="gpn">GPN Number</label>
+                <input type="text" class="form-control" id="gpn" placeholder="Enter your GPN number" required>
+            </div>
+            <div class="form-group">
+                <label for="designation">Designation</label>
+                <input type="text" class="form-control" id="designation" placeholder="Enter your designation" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact Number</label>
+                <input type="text" class="form-control" id="contact" placeholder="Enter your contact number" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Base Office Location</label>
+                <input type="text" class="form-control" id="location" placeholder="Enter your base office location"
+                       required>
+            </div>
+            <div class="form-group">
+                <label for="location">Your Address</label>
+                <input type="text" class="form-control" id="address" placeholder="Enter your Address"
+                       required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Submit Request</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2023 Your Company. All rights reserved.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
