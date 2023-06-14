@@ -1,6 +1,7 @@
 package com.ey.assettrackingsystem.controller;
 
 
+import com.ey.assettrackingsystem.entity.Mobile;
 import com.ey.assettrackingsystem.entity.Users;
 import com.ey.assettrackingsystem.service.UsersService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -50,6 +52,11 @@ public class UsersController {
     @GetMapping("/googlecloudservices")
     public String showGoogleCloudServicesPage(Model model) {
         return "googlecloudservices";
+    }
+
+    @GetMapping("/mobiledataform")
+    public String showMobileDataFormPage() {
+        return "mobiledataform";
     }
 
     @GetMapping("/creditcard")
@@ -125,5 +132,14 @@ public class UsersController {
 
         // Redirect to a success page or perform any other necessary actions
         return "redirect:/laptop";
+    }
+
+    @Autowired
+    private MobileController mobileController;
+    @PostMapping("/addmobiledata")
+    public String addMobileData(@ModelAttribute Mobile mobile, RedirectAttributes redirectAttributes) {
+        mobileController.addMobile(mobile);
+        redirectAttributes.addFlashAttribute("successMessage", "Mobile Data Added successfully");
+        return "redirect:/mobiledataform";
     }
 }

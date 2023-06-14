@@ -34,6 +34,13 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- Lombok Connector -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
 		<!-- Cloud Sql Connector -->
 		<dependency>
 			<groupId>com.google.cloud.sql</groupId>
