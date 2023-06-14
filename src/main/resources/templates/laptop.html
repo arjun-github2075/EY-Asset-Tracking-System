@@ -8,6 +8,19 @@
         .card {
             margin-bottom: 20px;
         }
+        .stock.in-stock {
+            background-color: green;
+            color: white;
+            font-size: 12px;
+            padding: 5px;
+        }
+
+        .stock.out-of-stock {
+            background-color: red;
+            color: white;
+            font-size: 12px;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
@@ -30,19 +43,13 @@
                             <li th:text="'RAM: ' + ${product.ram}">RAM</li>
                             <li th:text="'Storage: ' + ${product.storage}">Storage</li>
                         </ul>
-                        <div class="stock-container" th:if="${product.inStock}">
-                            <div class="in-stock-message bg-success text-white p-2 mb-2 align-right">In Stock</div>
-                            <div class="button-container">
-                                <a th:href="@{/requestform}" class="btn btn-primary btn-block mb-2">Request</a>
-                                <button class="btn btn-warning btn-block text-dark font-weight-bold" onclick="addToCart(this)">Add to Cart</button>
-                            </div>
+                        <div th:if="${product.inStock}">
+                            <a th:href="@{/requestform}" class="btn btn-primary">Request</a>
+                            <button class="btn btn-success" onclick="addToCart(this)">Add to Cart</button>
+                            <span class="stock in-stock mr-2">In Stock</span>
                         </div>
-                        <div class="stock-container" th:unless="${product.inStock}">
-                            <div class="out-of-stock-message bg-danger text-white p-2 mb-2 align-right">Out of Stock</div>
-                            <div class="button-container">
-                                <button class="btn btn-primary btn-block disabled-btn" disabled>Request</button>
-                                <button class="btn btn-warning btn-block disabled-btn font-weight-bold" disabled>Add to Cart</button>
-                            </div>
+                        <div th:unless="${product.inStock}">
+                            <span class="stock out-of-stock">Out of Stock</span>
                         </div>
                     </div>
                 </div>

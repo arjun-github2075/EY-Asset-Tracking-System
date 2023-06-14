@@ -47,6 +47,11 @@ public class UsersController {
         return "laptop";
     }
 
+    @GetMapping("/googlecloudservices")
+    public String showGoogleCloudServicesPage(Model model) {
+        return "googlecloudservices";
+    }
+
     @GetMapping("/creditcard")
     public String showCreditcardPage() {
         return "creditcard";
