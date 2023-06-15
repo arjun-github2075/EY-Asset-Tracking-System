@@ -1,6 +1,7 @@
 package com.ey.assettrackingsystem.controller;
 
 
+import com.ey.assettrackingsystem.entity.LaptopProduct;
 import com.ey.assettrackingsystem.entity.Mobile;
 import com.ey.assettrackingsystem.entity.Users;
 import com.ey.assettrackingsystem.service.UsersService;
@@ -89,6 +90,11 @@ public class UsersController {
         return "track";
     }
 
+    @GetMapping("/laptopdataform")
+    public String showLaptopDataFormPage() {
+        return "laptopdataform";
+    }
+
     @PostMapping("/save-user")
     public String saveUsers(@RequestBody Users users) {
         usersService.saveUsers(users);
@@ -136,10 +142,18 @@ public class UsersController {
 
     @Autowired
     private MobileController mobileController;
+
     @PostMapping("/addmobiledata")
     public String addMobileData(@ModelAttribute Mobile mobile, RedirectAttributes redirectAttributes) {
         mobileController.addMobile(mobile);
         redirectAttributes.addFlashAttribute("successMessage", "Mobile Data Added successfully");
         return "redirect:/mobiledataform";
+    }
+
+    @PostMapping("/create-laptop-product")
+    public String addLaptopData(@ModelAttribute LaptopProduct laptopProduct, RedirectAttributes redirectAttributes) {
+        laptopProductController.createProduct(laptopProduct);
+        redirectAttributes.addFlashAttribute("successMessage", "Laptop Data Added successfully");
+        return "redirect:/laptopdataform";
     }
 }

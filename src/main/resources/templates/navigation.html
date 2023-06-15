@@ -23,6 +23,16 @@
                     <i class="fas fa-home"></i> Home
                 </a>
             </li>
+            <li class="nav-item" id="mobileDataFormLink" style="display: none;">
+                <a class="nav-link text-white" th:href="@{/mobiledataform}">
+                    <i class="fas fa-plus"></i> Add Mobile Data
+                </a>
+            </li>
+            <li class="nav-item" id="laptopDataFormLink" style="display: none;">
+                <a class="nav-link text-white" th:href="@{/laptopdataform}">
+                    <i class="fas fa-plus"></i> Add Laptop Data
+                </a>
+            </li>
             <li class="nav-item" id="cartLink" style="display: none;">
                 <a class="nav-link text-white" th:href="@{/cart}">
                     <i class="fas fa-shopping-cart"></i> Cart
@@ -57,6 +67,8 @@
         document.getElementById('cartLink').style.display = 'block';
         document.getElementById('trackLink').style.display = 'block';
         document.getElementById('cloudLink').style.display = 'block';
+        document.getElementById('mobileDataFormLink').style.display = 'block';
+        document.getElementById('laptopDataFormLink').style.display = 'block';
         document.getElementById('loginLink').style.display = 'none';
         document.getElementById('signupLink').style.display = 'none';
     }
