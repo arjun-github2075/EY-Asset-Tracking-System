@@ -1,6 +1,8 @@
 package com.ey.assettrackingsystem.controller;
 
 
+import com.ey.assettrackingsystem.entity.LaptopProduct;
+import com.ey.assettrackingsystem.entity.Mobile;
 import com.ey.assettrackingsystem.entity.Users;
 import com.ey.assettrackingsystem.service.UsersService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -52,6 +55,11 @@ public class UsersController {
         return "googlecloudservices";
     }
 
+    @GetMapping("/mobiledataform")
+    public String showMobileDataFormPage() {
+        return "mobiledataform";
+    }
+
     @GetMapping("/creditcard")
     public String showCreditcardPage() {
         return "creditcard";
@@ -80,6 +88,11 @@ public class UsersController {
     @GetMapping("/track")
     public String showTrackPage() {
         return "track";
+    }
+
+    @GetMapping("/laptopdataform")
+    public String showLaptopDataFormPage() {
+        return "laptopdataform";
     }
 
     @PostMapping("/save-user")
@@ -125,5 +138,22 @@ public class UsersController {
 
         // Redirect to a success page or perform any other necessary actions
         return "redirect:/laptop";
+    }
+
+    @Autowired
+    private MobileController mobileController;
+
+    @PostMapping("/addmobiledata")
+    public String addMobileData(@ModelAttribute Mobile mobile, RedirectAttributes redirectAttributes) {
+        mobileController.addMobile(mobile);
+        redirectAttributes.addFlashAttribute("successMessage", "Mobile Data Added successfully");
+        return "redirect:/mobiledataform";
+    }
+
+    @PostMapping("/create-laptop-product")
+    public String addLaptopData(@ModelAttribute LaptopProduct laptopProduct, RedirectAttributes redirectAttributes) {
+        laptopProductController.createProduct(laptopProduct);
+        redirectAttributes.addFlashAttribute("successMessage", "Laptop Data Added successfully");
+        return "redirect:/laptopdataform";
     }
 }
