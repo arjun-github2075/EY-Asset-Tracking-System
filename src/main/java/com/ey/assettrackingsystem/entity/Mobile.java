@@ -22,4 +22,5 @@ public class Mobile {
     private String mobileName;
     private String description;
     private String specification;
+    private Boolean inStock;
 }
