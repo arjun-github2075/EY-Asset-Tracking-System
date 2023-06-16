@@ -95,6 +95,12 @@ public class UsersController {
         return "laptopdataform";
     }
 
+    @GetMapping("/mobileproduct")
+    public String showMobileProductPage(Model model) {
+        model.addAttribute("mobiles",mobileController.getMobileData());
+        return "mobileproduct";
+    }
+
     @PostMapping("/save-user")
     public String saveUsers(@RequestBody Users users) {
         usersService.saveUsers(users);
